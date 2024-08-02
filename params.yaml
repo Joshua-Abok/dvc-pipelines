@@ -1,0 +1,11 @@
+# specify parameters inside the yaml file as follows :) 
+# params name is special to DVC pipelines and when you use a yaml file called 'params', 
+# DVC knows the file exists and it can read parameters from this yaml file.
+# if you have a diff name for your yaml configuration file  --> need to specify that to DVC
+
+
+data: 
+  csv_file_path: ./archive/imdb-dataset.csv
+  test_set_ratio: 0.3
+  train_csv_save_path: ./archive/train.csv
+  test_csv_save_path: ./archive/test.csv
