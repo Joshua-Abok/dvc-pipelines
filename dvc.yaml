@@ -1,0 +1,58 @@
+# specifying nodes inside stages key
+
+stages: 
+  # first stage  
+  prepare_data: 
+    cmd: python ./prepare_data.py    # prepare_data stage calls prepare_data.py script
+    deps:                            # now specifying it's dependencies
+      - ./prepare_data.py            # node is going to run prepare_data.py script whenever changes
+      - ./archive/imdb-dataset.csv   # using this data in the script
+    
+    params:                          # Now, specify params dependancy
+      # if used a different name for params.yaml
+      # - ./my-config.yaml: 
+      #   - data    # now specify your parameters
+      - data
+    
+    outs:                            # what are the outputs 
+      - ./archive/train.csv
+      - ./archive/test.csv
+
+  make_features:                     # our next node 
+    cmd: python ./make_features.py
+    deps: 
+      - ./make_features.py
+      - ./archive/train.csv
+      - ./archive/test.csv
+    params: 
+      - features
+    outs: 
+      - ./archive/train.joblib
+      - ./archive/test.joblib
+
+  train:                            # our next node
+    cmd: python ./train.py
+    deps: 
+      - ./train.py
+      - ./archive/test.csv          # using it in the train.py script
+      - ./archive/train.joblib
+    params: 
+      - train 
+    outs: 
+      - ./archive/model.joblib
+
+  evaluate:                         # final node :) 
+    cmd: python ./evaluate.py
+    deps: 
+      - ./evaluate.py
+      - ./archive/test.csv
+      - ./archive/test.joblib
+      - ./archive/model.joblib
+    params: 
+      - evaluate
+    outs: 
+      - ./archive/results.yaml
+
+
+
+

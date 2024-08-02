@@ -12,7 +12,7 @@ data:
 
 features: 
   # vectorizer to convert text to features for training
-  vectorizer: count-vectorizer
+  vectorizer: tfidf-vectorizer
   train_features_save_path: ./archive/train.joblib
   test_features_save_path:  ./archive/test.joblib
 
@@ -25,5 +25,5 @@ train:
 
 evaluate: 
   # specify metrics to use 
-  metric: accuracy
+  metric: f1_score
   results_save_path: ./archive/results.yaml
