@@ -22,3 +22,8 @@ train:
   C: 1.0 
   solver: lbfgs
   model_save_path: ./archive/model.joblib
+
+evaluate: 
+  # specify metrics to use 
+  metric: accuracy
+  results_save_path: ./archive/results.yaml

@@ -10,7 +10,7 @@ def train(config):
     print("Training...")
 
     train_inputs = joblib.load(config.features.train_features_save_path)
-    train_outputs = pd.read_csv(config.data.train_csv_save_path)["Labels"].values   # picking labels/targets
+    train_outputs = pd.read_csv(config.data.train_csv_save_path)["label"].values   # picking labels/targets
 
     penalty = config.train.penalty
     C = config.train.C
