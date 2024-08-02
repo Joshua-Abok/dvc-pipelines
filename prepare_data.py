@@ -1,6 +1,6 @@
 import pandas as pd
-# OmegaConf -> to read params.yaml
-from omegaconf import OmegaConf
+
+from omegaconf import OmegaConf    # OmegaConf -> to read params.yaml
 from sklearn.model_selection import train_test_split
 
 def prepare_data(config): 

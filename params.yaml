@@ -9,3 +9,9 @@ data:
   test_set_ratio: 0.3
   train_csv_save_path: ./archive/train.csv
   test_csv_save_path: ./archive/test.csv
+
+features: 
+  # vectorizer to convert text to features for training
+  vectorizer: count-vectorizer
+  train_features_save_path: ./archive/train.joblib
+  test_features_save_path:  ./archive/test.joblib
